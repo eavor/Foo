@@ -74,6 +74,11 @@ namespace Foo
             //设置col_7列宽度为200
             bindGridView.ColumnsConfig.Add(new ColumnConfig() { Field = "col_7", Visiable = true, Width = 200 });
 
+            #region 其他配置信息
+
+
+            #endregion
+
             //数据渲染到userDevGridView1控件
             userDevGridView1.SetInit(bindGridView);
         }
