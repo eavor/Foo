@@ -71,8 +71,6 @@ namespace Foo
             //数据渲染到userDevGridView1控件
             userDevGridView1.SetInit(bindGridView);
         }
-
-
         private DataTable GetDataTableSource()
         {
             DataTable dt = new DataTable();
@@ -93,7 +91,6 @@ namespace Foo
                 dt.Rows.Add("第二组数据", $"ContentTwo_{i + 1}", $"ContentTwo_{i + 2}", $"ContentTwo_{i + 3}",
                     $"ContentTwo_{i + 4}", $"ContentTwo_{i + 5}", $"ContentTwo_{i + 6}", $"7");
             }
-
             return dt;
         }
     }
