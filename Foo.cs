@@ -39,12 +39,14 @@ namespace Foo
 
             for (int i = 0; i < 10; i++)
             {
-                dt.Rows.Add("第一组数据", $"ContentOne_{i + 1}", $"ContentOne_{i + 2}", $"ContentOne_{i + 3}", $"ContentOne_{i + 4}", $"ContentOne_{i + 5}", $"ContentOne_{i + 6}", $"7");
+                dt.Rows.Add("第一组数据", $"ContentOne_{i + 1}", $"ContentOne_{i + 2}", $"ContentOne_{i + 3}", 
+                    $"ContentOne_{i + 4}", $"ContentOne_{i + 5}", $"ContentOne_{i + 6}", $"7");
             }
 
             for (int i = 0; i < 10; i++)
             {
-                dt.Rows.Add("第二组数据", $"ContentTwo_{i + 1}", $"ContentTwo_{i + 2}", $"ContentTwo_{i + 3}", $"ContentTwo_{i + 4}", $"ContentTwo_{i + 5}", $"ContentTwo_{i + 6}", $"7");
+                dt.Rows.Add("第二组数据", $"ContentTwo_{i + 1}", $"ContentTwo_{i + 2}", $"ContentTwo_{i + 3}", 
+                    $"ContentTwo_{i + 4}", $"ContentTwo_{i + 5}", $"ContentTwo_{i + 6}", $"7");
             }
 
             return dt;
