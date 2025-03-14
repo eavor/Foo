@@ -68,6 +68,12 @@ namespace Foo
 
             bindGridView.contextMenuStrip = contextMenuStrip;
 
+            //设置col_6列不可见
+            bindGridView.ColumnsConfig.Add(new ColumnConfig() { Field = "col_6", Visiable = false});
+
+            //设置col_7列宽度为200
+            bindGridView.ColumnsConfig.Add(new ColumnConfig() { Field = "col_7", Visiable = true, Width = 200 });
+
             //数据渲染到userDevGridView1控件
             userDevGridView1.SetInit(bindGridView);
         }
