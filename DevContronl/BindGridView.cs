@@ -125,12 +125,7 @@ namespace Foo
         public bool ShowGridViewFooter { get; set; } = false;
 
         /// <summary>
-        /// 是否行展示按照单个字段分颜色
-        /// </summary>
-        public bool IsAbleRowShow { get; set; }
-
-        /// <summary>
-        /// 是否列宽度自扩展适应表格
+        /// 是否列宽度自扩展适应填充满表格
         /// </summary>
         public bool ColumnWindthAuto { get; set; } = true;
 
