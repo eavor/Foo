@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -36,6 +37,16 @@ namespace Foo
             {
                 new RulesDto { ItemType = DevExpress.Data.SummaryItemType.Sum, Col = "col_7", Desc = "合计：{0}" },
             });
+
+            string expression = "col_0='第一组数据'";
+
+            //指定条件显示不同颜色
+            bindGridView.colorCellRules.Add(
+                new ColorCellRulesDto() { CellColor = Color.FromArgb(192, 255, 255), Col = "col_0", Expression = expression }
+                );
+
+            //是否开启左侧选择按钮
+            bindGridView.Options.ShowCheckBoxSelectColumnHeader = true;
 
             //数据渲染到userDevGridView1控件
             userDevGridView1.SetInit(bindGridView);
