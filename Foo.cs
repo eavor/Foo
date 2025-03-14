@@ -59,14 +59,14 @@ namespace Foo
                 MessageBox.Show($"双击事件,点击了列{selected.Keys.FirstOrDefault()}点击值为{selected[selected.Keys.FirstOrDefault()]}");
             };
 
-            ////绑定右键菜单
-            //ContextMenuStrip contextMenuStrip = new ContextMenuStrip();
-            //// 添加菜单项
-            //contextMenuStrip.Items.Add("选项1");
-            //contextMenuStrip.Items.Add("选项2");
-            //contextMenuStrip.Items.Add("选项3");
+            //绑定右键菜单
+            ContextMenuStrip contextMenuStrip = new ContextMenuStrip();
+            // 添加菜单项
+            contextMenuStrip.Items.Add("选项1");
+            contextMenuStrip.Items.Add("选项2");
+            contextMenuStrip.Items.Add("选项3");
 
-            //bindGridView.contextMenuStrip = contextMenuStrip;
+            bindGridView.contextMenuStrip = contextMenuStrip;
 
             //数据渲染到userDevGridView1控件
             userDevGridView1.SetInit(bindGridView);
