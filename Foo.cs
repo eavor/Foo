@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DevExpress.Utils.Extensions;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -47,19 +48,27 @@ namespace Foo
             //是否开启左侧选择按钮
             bindGridView.Options.ShowCheckBoxSelectColumnHeader = true;
 
-            bindGridView.DoubleClickHandler += DoubleClickEvent;
+            //绑定双击事件
+            bindGridView.DoubleClickHandler += (_s, _e) =>
+            {
+                //获取选中数据
+                var data = userDevGridView1.GetSelectedRows();
+
+                MessageBox.Show("双击事件");
+            };
+            //绑定右键菜单
+            ContextMenuStrip contextMenuStrip = new ContextMenuStrip();
+            // 添加菜单项
+            contextMenuStrip.Items.Add("选项1");
+            contextMenuStrip.Items.Add("选项2");
+            contextMenuStrip.Items.Add("选项3");
+
+            bindGridView.contextMenuStrip = contextMenuStrip;
 
             //数据渲染到userDevGridView1控件
             userDevGridView1.SetInit(bindGridView);
         }
 
-        private void DoubleClickEvent(object sender, EventArgs e)
-        {
-            //获取选中数据
-            var data = userDevGridView1.GetSelectedRows();
-
-            MessageBox.Show("双击事件");
-        }
 
         private DataTable GetDataTableSource()
         {
