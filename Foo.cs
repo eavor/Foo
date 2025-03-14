@@ -20,7 +20,7 @@ namespace Foo
         private void Foo_Load(object sender, EventArgs e)
         {
             BindGridView bindGridView = new BindGridView();
-            
+
             //绑定数据源
             bindGridView.DataSource = GetDataTableSource();
 
@@ -30,6 +30,12 @@ namespace Foo
                 {
                     new RulesDto() { Col = "col_7", ItemType = DevExpress.Data.SummaryItemType.Sum,Desc="合计: {0}" },
                 });
+
+            //指定某些列开启组内合计
+            bindGridView.rulesDtos.AddRange(new List<RulesDto>()
+            {
+                new RulesDto { ItemType = DevExpress.Data.SummaryItemType.Sum, Col = "col_7", Desc = "合计：{0}" },
+            });
 
             //数据渲染到userDevGridView1控件
             userDevGridView1.SetInit(bindGridView);
@@ -46,13 +52,13 @@ namespace Foo
 
             for (int i = 0; i < 10; i++)
             {
-                dt.Rows.Add("第一组数据", $"ContentOne_{i + 1}", $"ContentOne_{i + 2}", $"ContentOne_{i + 3}", 
+                dt.Rows.Add("第一组数据", $"ContentOne_{i + 1}", $"ContentOne_{i + 2}", $"ContentOne_{i + 3}",
                     $"ContentOne_{i + 4}", $"ContentOne_{i + 5}", $"ContentOne_{i + 6}", $"7");
             }
 
             for (int i = 0; i < 10; i++)
             {
-                dt.Rows.Add("第二组数据", $"ContentTwo_{i + 1}", $"ContentTwo_{i + 2}", $"ContentTwo_{i + 3}", 
+                dt.Rows.Add("第二组数据", $"ContentTwo_{i + 1}", $"ContentTwo_{i + 2}", $"ContentTwo_{i + 3}",
                     $"ContentTwo_{i + 4}", $"ContentTwo_{i + 5}", $"ContentTwo_{i + 6}", $"7");
             }
 
