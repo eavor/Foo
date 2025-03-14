@@ -129,6 +129,10 @@ namespace Foo
         /// </summary>
         public bool ColumnWindthAuto { get; set; } = true;
 
+        /// <summary>
+        /// 点击分组行时，是否默认全部展开其下子分组
+        /// </summary>
+        public bool ExpandAllChildGroupsAuto { get; set; } = true;
     }
 
     public class OrderDetails

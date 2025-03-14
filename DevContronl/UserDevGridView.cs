@@ -70,6 +70,8 @@ namespace Foo
 
             gridView1.KeyDown += KeyDownViewEvent;//按键事件
 
+            gridView1.RowClick += RowClickEvent;//点击行事件用于处理展开所有分组
+
             gridView2.EndGrouping += EndGroupViewEvent;//分组结束事件
 
             gridView2.StartGrouping += StartGroupViewEvent;//分组开始事件
@@ -133,6 +135,37 @@ namespace Foo
             //设置表格列是否根据当前表格宽度自适应
             gridView1.OptionsView.ColumnAutoWidth = _bindGridView.Options.ColumnWindthAuto;
             gridView2.OptionsView.ColumnAutoWidth = _bindGridView.Options.ColumnWindthAuto;
+        }
+
+        private void RowClickEvent(object sender, RowClickEventArgs e)
+        {
+            if (!_bindGridView.Options.ExpandAllChildGroupsAuto) return;
+
+            GridView view = sender as GridView;
+
+            // 检查当前点击的行是否是分组行
+            if (view.IsGroupRow(e.RowHandle))
+            {
+                if (view.GetRowExpanded(e.RowHandle))
+                {
+                    view.ExpandGroupRow(e.RowHandle);
+                    ExpandAllChildGroups(view, e.RowHandle); // 展开所有子分组
+                }
+            }
+        }
+        // 递归展开所有子分组
+        private void ExpandAllChildGroups(GridView view, int rowHandle)
+        {
+            int childRowCount = view.GetChildRowCount(rowHandle);
+            for (int i = 0; i < childRowCount; i++)
+            {
+                int childRowHandle = view.GetChildRowHandle(rowHandle, i);
+                if (view.IsGroupRow(childRowHandle))
+                {
+                    view.ExpandGroupRow(childRowHandle);
+                    ExpandAllChildGroups(view, childRowHandle); // 递归展开子分组
+                }
+            }
         }
         private void AttachHScrollBarEvent()
         {
@@ -860,7 +893,7 @@ namespace Foo
                 else if (e.RowHandle < 0 && e.RowHandle > -1000)
                 {
                     e.Info.Appearance.BackColor = System.Drawing.Color.AntiqueWhite;
-                    e.Info.DisplayText = "G" + e.RowHandle.ToString();
+                    e.Info.DisplayText = "";//"G" + e.RowHandle.ToString();
                 }
             };
             #endregion
