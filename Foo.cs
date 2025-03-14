@@ -21,7 +21,6 @@ namespace Foo
         private void Foo_Load(object sender, EventArgs e)
         {
             BindGridView bindGridView = new BindGridView();
-
             //绑定数据源
             bindGridView.DataSource = GetDataTableSource();
 
@@ -48,8 +47,18 @@ namespace Foo
             //是否开启左侧选择按钮
             bindGridView.Options.ShowCheckBoxSelectColumnHeader = true;
 
+            bindGridView.DoubleClickHandler += DoubleClickEvent;
+
             //数据渲染到userDevGridView1控件
             userDevGridView1.SetInit(bindGridView);
+        }
+
+        private void DoubleClickEvent(object sender, EventArgs e)
+        {
+            //获取选中数据
+            var data = userDevGridView1.GetSelectedRows();
+
+            MessageBox.Show("双击事件");
         }
 
         private DataTable GetDataTableSource()
