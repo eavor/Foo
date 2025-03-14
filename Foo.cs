@@ -24,6 +24,13 @@ namespace Foo
             //绑定数据源
             bindGridView.DataSource = GetDataTableSource();
 
+            //指定某些列开启表格页尾合计
+            bindGridView.CalculationDto.AddRange(
+                new List<RulesDto>()
+                {
+                    new RulesDto() { Col = "col_7", ItemType = DevExpress.Data.SummaryItemType.Sum,Desc="合计: {0}" },
+                });
+
             //数据渲染到userDevGridView1控件
             userDevGridView1.SetInit(bindGridView);
         }
